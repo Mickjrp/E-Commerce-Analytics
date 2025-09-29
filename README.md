@@ -86,3 +86,9 @@ By implementing the above strategies, the business can boost profitability, cust
 
 ---
 
+## How to run
+- Clone the project
+- docker compose -f docker-compose.yml -f docker-compose.airflow.yml up -d
+- Access Airflow at http://localhost:8080
+- Run DAG: ecom_etl (ETL pipeline)
+- Open Power BI file dashboard.pbix
