@@ -12,11 +12,11 @@ The project integrates **Airflow, MongoDB, PostgreSQL, and Power BI** to deliver
 
 ---
 ## Repository Structure
-├── airflow/       # DAGs, logs, plugins
-├── data/          # Raw & processed datasets
-├── docker/        # Docker Compose configs
-├── scripts/       # ETL + analytics Python scripts
-├── dashboard/     # Power BI files & PDF export
+├── airflow/       # DAGs, logs, plugins\n
+├── data/          # Raw & processed datasets\n
+├── docker/        # Docker Compose configs\n
+├── scripts/       # ETL + analytics Python scripts\n
+├── dashboard/     # Power BI files & PDF export\n
 └── README.md
 ---
 
