@@ -12,6 +12,18 @@ The project integrates **Airflow, MongoDB, PostgreSQL, and Power BI** to deliver
 
 ---
 
+## Repository Structure
+'''
+├── airflow/       # DAGs, logs, plugins
+├── data/          # Raw & processed datasets
+├── docker/        # Docker Compose configs
+├── scripts/       # ETL + analytics Python scripts
+├── dashboard/     # Power BI files & PDF export
+└── README.md
+'''
+
+---
+
 ## E-Commerce Dashboard Analysis
 ![Dashboard Preview](./dashboard/dashboard.pdf)
 
@@ -87,7 +99,7 @@ By implementing the above strategies, the business can boost profitability, cust
 ---
 
 ## How to run
-- Clone the project
+- git clone https://github.com/Mickjrp/E-Commerce-Analytics.git
 - docker compose -f docker-compose.yml -f docker-compose.airflow.yml up -d
 - Access Airflow at http://localhost:8080
 - Run DAG: ecom_etl (ETL pipeline)
