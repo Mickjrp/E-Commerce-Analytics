@@ -1,0 +1,29 @@
+[2025-09-24T21:27:33.279+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-09-24T21:27:33.307+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ecom_etl.ingest_to_mongo manual__2025-09-24T21:27:28.671639+00:00 [queued]>
+[2025-09-24T21:27:33.315+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ecom_etl.ingest_to_mongo manual__2025-09-24T21:27:28.671639+00:00 [queued]>
+[2025-09-24T21:27:33.317+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-09-24T21:27:33.334+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): ingest_to_mongo> on 2025-09-24 21:27:28.671639+00:00
+[2025-09-24T21:27:33.339+0000] {standard_task_runner.py:63} INFO - Started process 548 to run task
+[2025-09-24T21:27:33.343+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'ecom_etl', 'ingest_to_mongo', 'manual__2025-09-24T21:27:28.671639+00:00', '--job-id', '17', '--raw', '--subdir', 'DAGS_FOLDER/ecom_etl_dag.py', '--cfg-path', '/tmp/tmp6isqksq0']
+[2025-09-24T21:27:33.346+0000] {standard_task_runner.py:91} INFO - Job 17: Subtask ingest_to_mongo
+[2025-09-24T21:27:33.413+0000] {task_command.py:426} INFO - Running <TaskInstance: ecom_etl.ingest_to_mongo manual__2025-09-24T21:27:28.671639+00:00 [running]> on host b829da94a7fc
+[2025-09-24T21:27:33.495+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ecom' AIRFLOW_CTX_DAG_ID='ecom_etl' AIRFLOW_CTX_TASK_ID='ingest_to_mongo' AIRFLOW_CTX_EXECUTION_DATE='2025-09-24T21:27:28.671639+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-24T21:27:28.671639+00:00'
+[2025-09-24T21:27:33.496+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-09-24T21:27:33.515+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-09-24T21:27:33.517+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'export MONGO_HOST=mongo MONGO_USER=ecom_admin MONGO_PASS=ecom_admin_pass MONGO_DB=ecom;python /opt/airflow/scripts/ingest_to_mongo.py']
+[2025-09-24T21:27:33.527+0000] {subprocess.py:86} INFO - Output:
+[2025-09-24T21:27:45.850+0000] {subprocess.py:93} INFO - Loading /opt/airflow/data/raw/olist_customers_dataset.csv -> customers ...
+[2025-09-24T21:27:45.851+0000] {subprocess.py:93} INFO - Inserted 99441 records into customers
+[2025-09-24T21:27:45.851+0000] {subprocess.py:93} INFO - Loading /opt/airflow/data/raw/olist_orders_dataset.csv -> orders ...
+[2025-09-24T21:27:45.852+0000] {subprocess.py:93} INFO - Inserted 99441 records into orders
+[2025-09-24T21:27:45.852+0000] {subprocess.py:93} INFO - Loading /opt/airflow/data/raw/olist_order_items_dataset.csv -> items ...
+[2025-09-24T21:27:45.853+0000] {subprocess.py:93} INFO - Inserted 112650 records into items
+[2025-09-24T21:27:45.853+0000] {subprocess.py:93} INFO - Loading /opt/airflow/data/raw/olist_order_reviews_dataset.csv -> reviews ...
+[2025-09-24T21:27:45.853+0000] {subprocess.py:93} INFO - Inserted 99224 records into reviews
+[2025-09-24T21:27:45.854+0000] {subprocess.py:93} INFO - ✅ Ingestion complete!
+[2025-09-24T21:27:46.100+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-09-24T21:27:46.101+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-09-24T21:27:46.123+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ecom_etl, task_id=ingest_to_mongo, run_id=manual__2025-09-24T21:27:28.671639+00:00, execution_date=20250924T212728, start_date=20250924T212733, end_date=20250924T212746
+[2025-09-24T21:27:46.151+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-09-24T21:27:46.170+0000] {taskinstance.py:3503} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-09-24T21:27:46.177+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

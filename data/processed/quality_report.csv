@@ -1,0 +1,18 @@
+check,status,info
+orders row_count > 0,PASS,rows=99441
+order_items row_count > 0,PASS,rows=112650
+customers row_count > 0,PASS,rows=99441
+products row_count > 0,PASS,rows=32951
+sellers row_count > 0,PASS,rows=3095
+order_payments row_count > 0,PASS,rows=99440
+orders.order_id unique,PASS,duplicates=0
+customers.customer_id unique,PASS,duplicates=0
+products.product_id unique,PASS,duplicates=0
+sellers.seller_id unique,PASS,duplicates=0
+orders.order_id not null,PASS,nulls=0
+orders.customer_id not null,PASS,nulls=0
+customers.customer_id not null,PASS,nulls=0
+orders.order_value >= 0,PASS,negatives=0
+order_payments.payment_value_total >= 0,PASS,negatives=0
+orders.order_status allowed_values,PASS,out_of_set=0
+orders delivered_at >= purchased_at,PASS,violations=0

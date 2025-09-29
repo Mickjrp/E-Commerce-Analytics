@@ -1,0 +1,69 @@
+services:
+  airflow-init:
+    image: apache/airflow:2.9.2
+    container_name: ecom-analytics-airflow-init
+    env_file:
+      - ../airflow/.env
+    entrypoint: bash
+    command: >
+      -c "pip install --no-cache-dir pandas numpy sqlalchemy psycopg2-binary pymongo scikit-learn pyarrow &&
+          airflow db migrate &&
+          airflow users create --username admin --firstname Admin --lastname User --role Admin --email admin@example.com --password admin"
+    volumes:
+      - airflow_home:/opt/airflow
+      - ../airflow/dags:/opt/airflow/dags
+      - ../airflow/logs:/opt/airflow/logs
+      - ../airflow/plugins:/opt/airflow/plugins
+      - ../scripts:/opt/airflow/scripts
+      - ../data:/opt/airflow/data
+    networks:
+      - ecom_net
+    depends_on:
+      - postgres
+      - mongo
+
+  airflow-webserver:
+    image: apache/airflow:2.9.2
+    container_name: ecom-analytics-airflow-web
+    env_file:
+      - ../airflow/.env
+    command: webserver
+    ports:
+      - "8080:8080"
+    volumes:
+      - airflow_home:/opt/airflow
+      - ../airflow/dags:/opt/airflow/dags
+      - ../airflow/logs:/opt/airflow/logs
+      - ../airflow/plugins:/opt/airflow/plugins
+      - ../scripts:/opt/airflow/scripts
+      - ../data:/opt/airflow/data
+    networks:
+      - ecom_net
+    depends_on:
+      - postgres
+
+  airflow-scheduler:
+    image: apache/airflow:2.9.2
+    container_name: ecom-analytics-airflow-scheduler
+    env_file:
+      - ../airflow/.env
+    command: scheduler
+    volumes:
+      - airflow_home:/opt/airflow
+      - ../airflow/dags:/opt/airflow/dags
+      - ../airflow/logs:/opt/airflow/logs
+      - ../airflow/plugins:/opt/airflow/plugins
+      - ../scripts:/opt/airflow/scripts
+      - ../data:/opt/airflow/data
+    networks:
+      - ecom_net
+    depends_on:
+      - airflow-webserver
+
+networks:
+  ecom_net:
+    external: true
+    name: docker_ecom_net
+
+volumes:
+  airflow_home: {}

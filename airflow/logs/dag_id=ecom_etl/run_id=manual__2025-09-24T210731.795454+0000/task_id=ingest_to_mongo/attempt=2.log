@@ -1,0 +1,58 @@
+[2025-09-24T21:12:40.463+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-09-24T21:12:40.489+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ecom_etl.ingest_to_mongo manual__2025-09-24T21:07:31.795454+00:00 [queued]>
+[2025-09-24T21:12:40.497+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ecom_etl.ingest_to_mongo manual__2025-09-24T21:07:31.795454+00:00 [queued]>
+[2025-09-24T21:12:40.499+0000] {taskinstance.py:2306} INFO - Starting attempt 2 of 2
+[2025-09-24T21:12:40.522+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): ingest_to_mongo> on 2025-09-24 21:07:31.795454+00:00
+[2025-09-24T21:12:40.528+0000] {standard_task_runner.py:63} INFO - Started process 260 to run task
+[2025-09-24T21:12:40.533+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'ecom_etl', 'ingest_to_mongo', 'manual__2025-09-24T21:07:31.795454+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/ecom_etl_dag.py', '--cfg-path', '/tmp/tmpz4jn14to']
+[2025-09-24T21:12:40.536+0000] {standard_task_runner.py:91} INFO - Job 8: Subtask ingest_to_mongo
+[2025-09-24T21:12:40.609+0000] {task_command.py:426} INFO - Running <TaskInstance: ecom_etl.ingest_to_mongo manual__2025-09-24T21:07:31.795454+00:00 [running]> on host b829da94a7fc
+[2025-09-24T21:12:40.684+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ecom' AIRFLOW_CTX_DAG_ID='ecom_etl' AIRFLOW_CTX_TASK_ID='ingest_to_mongo' AIRFLOW_CTX_EXECUTION_DATE='2025-09-24T21:07:31.795454+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-09-24T21:07:31.795454+00:00'
+[2025-09-24T21:12:40.685+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-09-24T21:12:40.704+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-09-24T21:12:40.706+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'export MONGO_HOST=mongo MONGO_USER=ecom_admin MONGO_PASS=ecom_admin_pass MONGO_DB=ecom;python /opt/airflow/scripts/ingest_to_mongo.py']
+[2025-09-24T21:12:40.715+0000] {subprocess.py:86} INFO - Output:
+[2025-09-24T21:12:41.806+0000] {subprocess.py:93} INFO - Loading olist_customers_dataset.csv -> customers ...
+[2025-09-24T21:12:41.807+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-09-24T21:12:41.807+0000] {subprocess.py:93} INFO -   File "/opt/airflow/scripts/ingest_to_mongo.py", line 43, in <module>
+[2025-09-24T21:12:41.809+0000] {subprocess.py:93} INFO -     load_csv_to_mongo("olist_customers_dataset.csv", "customers", index_field="customer_id")
+[2025-09-24T21:12:41.810+0000] {subprocess.py:93} INFO -   File "/opt/airflow/scripts/ingest_to_mongo.py", line 30, in load_csv_to_mongo
+[2025-09-24T21:12:41.811+0000] {subprocess.py:93} INFO -     df = pd.read_csv(path)
+[2025-09-24T21:12:41.812+0000] {subprocess.py:93} INFO -          ^^^^^^^^^^^^^^^^^
+[2025-09-24T21:12:41.812+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 948, in read_csv
+[2025-09-24T21:12:41.813+0000] {subprocess.py:93} INFO -     return _read(filepath_or_buffer, kwds)
+[2025-09-24T21:12:41.813+0000] {subprocess.py:93} INFO -            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-09-24T21:12:41.813+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 611, in _read
+[2025-09-24T21:12:41.814+0000] {subprocess.py:93} INFO -     parser = TextFileReader(filepath_or_buffer, **kwds)
+[2025-09-24T21:12:41.814+0000] {subprocess.py:93} INFO -              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-09-24T21:12:41.814+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1448, in __init__
+[2025-09-24T21:12:41.815+0000] {subprocess.py:93} INFO -     self._engine = self._make_engine(f, self.engine)
+[2025-09-24T21:12:41.815+0000] {subprocess.py:93} INFO -                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+[2025-09-24T21:12:41.815+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1705, in _make_engine
+[2025-09-24T21:12:41.816+0000] {subprocess.py:93} INFO -     self.handles = get_handle(
+[2025-09-24T21:12:41.816+0000] {subprocess.py:93} INFO -                    ^^^^^^^^^^^
+[2025-09-24T21:12:41.816+0000] {subprocess.py:93} INFO -   File "/home/airflow/.local/lib/python3.12/site-packages/pandas/io/common.py", line 863, in get_handle
+[2025-09-24T21:12:41.816+0000] {subprocess.py:93} INFO -     handle = open(
+[2025-09-24T21:12:41.817+0000] {subprocess.py:93} INFO -              ^^^^^
+[2025-09-24T21:12:41.817+0000] {subprocess.py:93} INFO - FileNotFoundError: [Errno 2] No such file or directory: 'data/raw/olist_customers_dataset.csv'
+[2025-09-24T21:12:42.395+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-09-24T21:12:42.396+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-09-24T21:12:42.402+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/bash.py", line 243, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-09-24T21:12:42.406+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=ecom_etl, task_id=ingest_to_mongo, run_id=manual__2025-09-24T21:07:31.795454+00:00, execution_date=20250924T210731, start_date=20250924T211240, end_date=20250924T211242
+[2025-09-24T21:12:42.417+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 8 for task ingest_to_mongo (Bash command failed. The command returned a non-zero exit code 1.; 260)
+[2025-09-24T21:12:42.433+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 1
+[2025-09-24T21:12:42.446+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-09-24T21:12:42.454+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,21 @@
+[2025-09-28T14:01:21.038+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2025-09-28T14:01:21.061+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ecom_etl.analytics_rfm scheduled__2025-09-27T02:30:00+00:00 [queued]>
+[2025-09-28T14:01:21.068+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ecom_etl.analytics_rfm scheduled__2025-09-27T02:30:00+00:00 [queued]>
+[2025-09-28T14:01:21.069+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2025-09-28T14:01:21.085+0000] {taskinstance.py:2330} INFO - Executing <Task(BashOperator): analytics_rfm> on 2025-09-27 02:30:00+00:00
+[2025-09-28T14:01:21.090+0000] {standard_task_runner.py:63} INFO - Started process 153 to run task
+[2025-09-28T14:01:21.093+0000] {standard_task_runner.py:90} INFO - Running: ['airflow', 'tasks', 'run', 'ecom_etl', 'analytics_rfm', 'scheduled__2025-09-27T02:30:00+00:00', '--job-id', '25', '--raw', '--subdir', 'DAGS_FOLDER/ecom_etl_dag.py', '--cfg-path', '/tmp/tmp25mqbbcc']
+[2025-09-28T14:01:21.095+0000] {standard_task_runner.py:91} INFO - Job 25: Subtask analytics_rfm
+[2025-09-28T14:01:21.153+0000] {task_command.py:426} INFO - Running <TaskInstance: ecom_etl.analytics_rfm scheduled__2025-09-27T02:30:00+00:00 [running]> on host 868eef8f4f48
+[2025-09-28T14:01:21.236+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='ecom' AIRFLOW_CTX_DAG_ID='ecom_etl' AIRFLOW_CTX_TASK_ID='analytics_rfm' AIRFLOW_CTX_EXECUTION_DATE='2025-09-27T02:30:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-09-27T02:30:00+00:00'
+[2025-09-28T14:01:21.238+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2025-09-28T14:01:21.255+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-09-28T14:01:21.256+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', 'export PG_HOST=postgres PG_USER=ecom_user PG_PASS=ecom_pass PG_DB=ecom_dw PG_SCHEMA=ecom && export DATA_DIR=/opt/airflow/data && python /opt/airflow/scripts/analytics_rfm.py']
+[2025-09-28T14:01:21.267+0000] {subprocess.py:86} INFO - Output:
+[2025-09-28T14:01:31.046+0000] {subprocess.py:93} INFO - RFM segmentation complete. Saved to ecom.customer_segments
+[2025-09-28T14:01:31.208+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-09-28T14:01:31.209+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2025-09-28T14:01:31.230+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=ecom_etl, task_id=analytics_rfm, run_id=scheduled__2025-09-27T02:30:00+00:00, execution_date=20250927T023000, start_date=20250928T140121, end_date=20250928T140131
+[2025-09-28T14:01:31.283+0000] {local_task_job_runner.py:240} INFO - Task exited with return code 0
+[2025-09-28T14:01:31.294+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-09-28T14:01:31.295+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
