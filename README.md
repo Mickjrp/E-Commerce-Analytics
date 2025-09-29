@@ -13,7 +13,7 @@ The project integrates **Airflow, MongoDB, PostgreSQL, and Power BI** to deliver
 ---
 
 ## E-Commerce Dashboard Analysis
-![Dashboard Preview](./dashboard/dashboard_final.png)
+![Dashboard Preview](./dashboard/dashboard.png)
 
 ### Key Insights
 - **Revenue & Orders**
