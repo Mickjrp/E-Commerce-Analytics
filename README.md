@@ -11,6 +11,14 @@ The project integrates **Airflow, MongoDB, PostgreSQL, and Power BI** to deliver
 - **Visualization:** Power BI interactive dashboard
 
 ---
+## Repository Structure
+├── airflow/       # DAGs, logs, plugins
+├── data/          # Raw & processed datasets
+├── docker/        # Docker Compose configs
+├── scripts/       # ETL + analytics Python scripts
+├── dashboard/     # Power BI files & PDF export
+└── README.md
+---
 
 ## E-Commerce Dashboard Analysis
 ![Dashboard Preview](./dashboard/dashboard.pdf)
